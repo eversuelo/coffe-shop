@@ -1,48 +1,35 @@
 ---
+import Header from "@/components/ui/Header.astro";
+import Footer from "@/components/ui/Footer.astro";
 import "../styles/global.css";
+import bg from '../assets/bg_home.jpg';
 interface Props {
     title?: string;
-    description?: string;
+    subtitle?: string;
+    bgImage?: string;
 }
-const {
-    title = 'Coffee Shop',
-    description = 'Fresh coffee served daily'
-} = Astro.props;
+const { title = "Coffee Shop", subtitle = "The best place to relax", bgImage=bg.src } =
+    Astro.props;
 ---
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta name="description" content={description} />
-        <title>{title}</title>
+        <meta name="description" content={subtitle} />
+        <title>Cafetería - {title}</title>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=PT+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
     </head>
-    <body class="m-0 bg-[#faf7f2] text-[#2e2a27] font-sans leading-relaxed">
-        <header class="flex flex-col gap-3 items-start px-8 py-4 bg-white border-b border-[#e5ddd2] sticky top-0 z-10 md:flex-row md:items-center md:justify-between">
-            <div class="font-bold text-xl tracking-wide flex items-center gap-2">
-                <img src="/logo.svg" alt="Coffee Shop Logo" width="32" height="32" loading="lazy" />
-                <span>Coffee Shop</span>
-            </div>
-            <nav aria-label="Main">
-                <ul class="flex flex-wrap gap-3 m-0 p-0 list-none md:flex-nowrap md:gap-5">
-                    <li><a class="font-medium px-3 py-2 rounded-lg transition-colors hover:bg-[#d4a373] hover:text-white" href="/">Home</a></li>
-                    <li><a class="font-medium px-3 py-2 rounded-lg transition-colors hover:bg-[#d4a373] hover:text-white" href="/menu">Menu</a></li>
-                    <li><a class="font-medium px-3 py-2 rounded-lg transition-colors hover:bg-[#d4a373] hover:text-white" href="/about">Our Story</a></li>
-                    <li><a class="font-medium px-3 py-2 rounded-lg transition-colors hover:bg-[#d4a373] hover:text-white" href="/locations">Locations</a></li>
-                    <li><a class="bg-[#8b5e34] text-white px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-[#714a27]" href="/order">Order Now</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <main class="max-w-[1200px] mx-auto min-h-[60vh] py-8 px-6 pb-12">
-            <slot />
-        </main>
-
-        <footer class="bg-white border-t border-[#e5ddd2] py-8 px-6 text-center text-sm">
-            <p>&copy; {new Date().getFullYear()} Coffee Shop. All rights reserved.</p>
-            <p><small>Crafted with Astro.</small></p>
-        </footer>
+    <body class="bg-coffee-100">
+        <Header title={title} subtitle={subtitle} bgImage={bgImage} />
+        <slot />
+        <Footer />
     </body>
 </html>

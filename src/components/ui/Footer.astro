@@ -1,0 +1,48 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+    <div class="footer__inner">
+        <p>&copy; {year} Coffee Shop. Todos los derechos reservados.</p>
+        <nav class="footer__nav" aria-label="Enlaces del pie">
+            <a href="/">Inicio</a>
+            <a href="/menu">Menú</a>
+            <a href="/about">Nosotros</a>
+            <a href="/contact">Contacto</a>
+        </nav>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        margin-top: 4rem;
+        padding: 2rem 1rem;
+        background: #1f1f1f;
+        color: #eee;
+        font-size: 0.9rem;
+    }
+    .footer__inner {
+        max-width: 960px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+        text-align: center;
+    }
+    .footer__nav {
+        display: flex;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+    .footer__nav a {
+        color: #d4b27c;
+        text-decoration: none;
+        transition: color .2s;
+    }
+    .footer__nav a:hover,
+    .footer__nav a:focus {
+        color: #f5d9a3;
+    }
+</style>
